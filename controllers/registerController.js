@@ -24,7 +24,7 @@ const handleNewUser = async (req, res) => {
             JSON.stringify(userDB.users)
         );
         console.log(userDB.users);
-        res.status(201).json({'success': 'new user was registered successfully'});
+        res.status(201).json({ 'success': 'new user was registered successfully' });
     } catch (err) {
         res.status(500).json({ 'message': err.message });
     }
