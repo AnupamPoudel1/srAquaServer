@@ -27,16 +27,17 @@ const handleLogin = async (req, res) => {
             { "username": foundUser.username },
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
-        )
+        );
         // saving access and refresh token in the database
         const otherUser = userDB.users.filter(person => person.username !== foundUser.username);
-        const currentUser = ([...foundUser, refreshToken]);
+        const currentUser = {...foundUser, refreshToken};
         userDB.setUsers([...otherUser, currentUser]);
         await fsPromises.writeFile(
-            path.join(__dirname, '..', 'model', 'user.json'),
+            path.join(__dirname, '..', 'model', 'users.json'),
             JSON.stringify(userDB.users)
         );
-        res.json({ 'success': 'Login Successful' });
+        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+        res.json({ accessToken });
     } else {
         res.sendStatus(401); //Unauthorized
     }

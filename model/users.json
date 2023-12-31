@@ -1,14 +1,19 @@
 [
   {
     "username": "anupam",
-    "password": "$2b$12$0IrLEOh10ZErf5P.d7VpKObxg3qox4kkwmCiCQKufK1jZhU0eGoIe"
+    "password": "$2b$10$8c/LrzwhGJRPguTY.Wukuu7W6U/Ube3B7VOGMvE/HNOvrvyXivnji"
   },
   {
     "username": "anurag",
-    "password": "$2b$12$9bB9uTR9dRxbai2tBxknI.41BpyPIfDzAJNul22SRs4xFJUr7Sehm"
+    "password": "$2b$10$CFS1jj47gT6E3wjWlNGUP.1Hu3Cm9gF0eg9h/qZ0g8.g0AY0rpR.m"
   },
   {
-    "username": "samyog",
-    "password": "$2b$12$Q2wzJFQtZYUaNZ.7I.LkLeENZ3sj1rhdKEIbCzcuhHD98XuqCOkLm"
+    "username": "srijan",
+    "password": "$2b$10$gS.ZiMt.zFLAWWOkwm6zKOAEA7x0DyRKOUaU6CG8cZ/ZMOcyqVUfW"
+  },
+  {
+    "username": "ganesh",
+    "password": "$2b$10$n7xe/Y7OiUhPcfRLtwDMcuQW6kdBMOmYciUIHOqsFOClP/H7nM0Cu",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTcwNDAyOTcxOCwiZXhwIjoxNzA0MTE2MTE4fQ.b6Dg5FpJcZyDGr6ecvbpCYIviFQJiSZfvt58wb78R9I"
   }
 ]
