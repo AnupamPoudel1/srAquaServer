@@ -5,7 +5,14 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
+const credentials = require('./middleware/credentials');
 const PORT = process.env.PORT || 3500;
+
+// cross origin resource sharing
+app.use(credentials);
+
+// cross origin resource sharing
+app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -17,9 +24,6 @@ app.use(cookieParser());
 
 // serve static file
 app.use(express.static(path.join(__dirname, '/public')));
-
-// cross origin resource sharing
-app.use(cors(corsOptions));
 
 // routes
 app.use('/', require('./routes/root'));

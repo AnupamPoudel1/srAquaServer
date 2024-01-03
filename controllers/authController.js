@@ -13,13 +13,19 @@ const handleLogin = async (req, res) => {
     if (!user || !psw) return res.status(400).json({ 'message': 'username and password required' });
     // check for user in database
     const foundUser = userDB.users.find(person => person.username === user);
-    if (!foundUser) return res.sendStatus(401); //Unauthorized'
+    if (!foundUser) return res.sendStatus(401); //Unauthorized
     // evaluate password if user found
     const match = await bcrypt.compare(psw, foundUser.password);
     if (match) {
+        const roles = Object.values(foundUser.roles);
         //create JWT token if user login us succesful
         const accessToken = jwt.sign(
-            { "username": foundUser.username },
+            {
+                "UserInfo": { 
+                    "username": foundUser.username,
+                    "roles": roles
+                },
+            },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '30s' }
         );
@@ -30,13 +36,13 @@ const handleLogin = async (req, res) => {
         );
         // saving access and refresh token in the database
         const otherUser = userDB.users.filter(person => person.username !== foundUser.username);
-        const currentUser = {...foundUser, refreshToken};
+        const currentUser = { ...foundUser, refreshToken };
         userDB.setUsers([...otherUser, currentUser]);
         await fsPromises.writeFile(
             path.join(__dirname, '..', 'model', 'users.json'),
             JSON.stringify(userDB.users)
         );
-        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
         res.json({ accessToken });
     } else {
         res.sendStatus(401); //Unauthorized

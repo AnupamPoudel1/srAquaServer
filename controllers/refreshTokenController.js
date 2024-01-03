@@ -13,7 +13,7 @@ const handleRefreshToken = async (req, res) => {
     // check for user refreshToken in database
     const foundUser = userDB.users.find(person => person.refreshToken === refreshToken);
     // const found = Array.from(foundUser);
-    if (!foundUser) return res.sendStatus(401); //Unauthorized'
+    if (!foundUser) return res.sendStatus(401); //Unauthorized
 
     // evaluate jwt
     jwt.verify(
@@ -21,8 +21,14 @@ const handleRefreshToken = async (req, res) => {
         process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
             if (err || foundUser.username !== decoded.username) return res.sendStatus(403);
+            const roles = Object.values(foundUser.roles);
             const accessToken = jwt.sign(
-                { "username": decoded.username },
+                {
+                    "UserInfo": {
+                        "username": foundUser.username,
+                        "roles": roles
+                    },
+                },
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: '30s' }
             );
