@@ -19,13 +19,12 @@ const handleLogut = async (req, res) => {
     }
     //delete refresh token from database
     const otherUsers = userDB.users.filter(person => person.refreshToken !== foundUser.refreshToken);
-    const currentUser = { ...foundUser, refreshToken: '' };
+    const currentUser = { ...foundUser, refreshToken: " " };
     userDB.setUsers([...otherUsers, currentUser]);
     await fsPromises.writeFile(
         path.join(__dirname, '..', 'model', 'users.json'),
         JSON.stringify(userDB.users)
-    )
-
+    );
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
     res.sendStatus(204);
 }
