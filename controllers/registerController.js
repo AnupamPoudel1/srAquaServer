@@ -20,7 +20,7 @@ const handleNewUser = async (req, res) => {
             // store username and password
             const newUser = {
                 'username': user,
-                'roles': { 'User': 704 },
+                'roles': { 'Admin': 701 },
                 'password': encryptedPsw
             };
             userDB.setUsers([...userDB.users, newUser]);

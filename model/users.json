@@ -1,1 +1,8 @@
-[{"username":"newUser","roles":{"User":704},"password":"$2b$10$teQLMWsCAyHU6q31OUAXLeUlunEt.x9uEJA6hhaI.J5dKJfDnM3BC","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpYXQiOjE3MDQzMzA5MTYsImV4cCI6MTcwNDQxNzMxNn0.nn9GTXgRmg7zPemPVT_L2aqhcaFHAMYtHHEeMJ6RBYM"}]
+[
+  {
+    "username": "iamadmin",
+    "roles": { "Admin": 701 },
+    "password": "$2b$10$sRhXIanA/CGToJVU4NcGk.JBPwNupdBvfAE3FeSrqZfvRyJbTdfFG",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VybmFtZSI6ImlhbWFkbWluIn0sImlhdCI6MTcwNDgwNTYwMiwiZXhwIjoxNzA0ODkyMDAyfQ.DbWaP4xaTBrp_5mEnJNAjltI17ZJ3O08yFRbcE7KdgE"
+  }
+]
