@@ -5,10 +5,9 @@ const rolesList = require('../../config/rolesList');
 const verifyRoles = require('../../middleware/verifyRoles');
 
 router.route('/')
-    .get(productController.getALlProducts)
-    .post(verifyRoles(rolesList.Admin), productController.createNewProduct)
-    .put(verifyRoles(rolesList.Admin), productController.updateProduct)
-    .delete(verifyRoles(rolesList.Admin), productController.deleteProduct);
+    .post(productController.createNewProduct)
+    .put(productController.updateProduct)
+    .delete(productController.deleteProduct);
 
 router.route('/:id')
     .get(productController.getProduct);
